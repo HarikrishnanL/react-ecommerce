@@ -1,0 +1,76 @@
+import React, { useState } from "react";
+import "./Product.scss";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import BalanceIcon from "@mui/icons-material/Balance";
+
+const Product = () => {
+    const [selectedImg, setSelectedImg] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const images = [
+        "https://images.pexels.com/photos/2173357/pexels-photo-2173357.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/2235073/pexels-photo-2235073.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ]
+
+    return (
+        <div className="product">
+            <div className="left">
+                <div className="images">
+                    <img src={images[0]} alt="" onClick={e => setSelectedImg(0)} />
+                    <img src={images[1]} alt="" onClick={e => setSelectedImg(1)} />
+                </div>
+                <div className="mainImg">
+                    <img src={images[selectedImg]} alt="" />
+                </div>
+            </div>
+
+            <div className="right">
+                <h1>Wedding Booka</h1>
+                <span className="price">$199</span>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Magni, quaerat? Exercitationem, sequi ex laborum in aperiam voluptatum ac
+                    cusamus quidem eveniet blanditiis sed hic tempore officia, consectetur aliquam,
+                    sunt vel perferendis.
+                </p>
+
+                <div className="quantity">
+                    <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
+                    {quantity}
+                    <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
+                </div>
+
+                <button className="add">
+                    <AddShoppingCartIcon /> ADD TO CART
+                </button>
+
+                <div className="links">
+                    <div className="item">
+                        <FavoriteBorderIcon /> ADD TO WISH LIST
+                    </div>
+                    <div className="item">
+                        <BalanceIcon /> ADD TO COMPARE
+                    </div>
+                </div>
+
+                <div className="info">
+                    <span>Vender: Polo</span>
+                    <span>Product Type: T-Shirt</span>
+                    <span>Tag: T-Shirt, Women, Top</span>
+                </div>
+
+                <hr />
+
+                <div className="info">
+                    <span>DESCRIPTION</span>
+                    <hr />
+                    <span>ADDITIONAL INFORMATION</span>
+                    <hr />
+                    <span>FAQ</span>
+                </div>
+
+            </div>
+        </div>
+    )
+};
+
+export default Product;
